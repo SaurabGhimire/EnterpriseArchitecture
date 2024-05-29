@@ -4,6 +4,10 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 
 	private Logger logger ;
 
+	CustomerRepositoryImpl(Logger logger){
+		this.logger = logger;
+	}
+
 	public void save(Customer customer) {
 		// simple sleep
 		try {
@@ -15,7 +19,4 @@ public class CustomerRepositoryImpl implements CustomerRepository{
 		logger.log("Customer is saved in the DB: "+ customer.getName() );
 	}
 
-	public void setLogger(Logger logger){
-		this.logger = logger;
-	}
 }

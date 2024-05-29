@@ -6,6 +6,10 @@ public class EmailSenderImpl implements EmailSender {
 
 	private Logger logger;
 
+	EmailSenderImpl(Logger logger){
+		this.logger = logger;
+	}
+
 	public String getOutgoingMailServer() {
 		return outgoingMailServer;
 	}
@@ -15,7 +19,5 @@ public class EmailSenderImpl implements EmailSender {
 		logger.log("Email is sent: message= "+message +" , emailaddress ="+ email  );
 	}
 
-	public void setLogger(Logger logger){
-		this.logger = logger;
-	}
+
 }
