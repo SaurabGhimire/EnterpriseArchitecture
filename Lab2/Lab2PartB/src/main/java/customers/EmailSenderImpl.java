@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EmailSenderImpl implements EmailSender {
-	@Value(" ${outgoing.mail.server}")
+	@Value("${outgoing.mail.server}")
 	String outgoingMailServer;
 
 	private Logger logger;

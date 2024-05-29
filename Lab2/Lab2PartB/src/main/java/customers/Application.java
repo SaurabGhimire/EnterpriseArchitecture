@@ -19,6 +19,5 @@ public class Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		customerService.addCustomer("Frank Brown", "fbrown@acme.com",
 				"mainstreet 5", "Chicago", "60613");
-
 	}
 }
