@@ -15,7 +15,9 @@
 	<bean id="customerRepository" class="customers.CustomerRepositoryImpl">
 		<property name="logger" ref="logger" />
 	</bean>
-	<bean id="emailSender" class="customers.EmailSenderImpl" />
+	<bean id="emailSender" class="customers.EmailSenderImpl" >
+		<property name="logger" ref="logger" />
+	</bean>
 	<bean id="logger" class="customers.LoggerImpl" />
 
 </beans>

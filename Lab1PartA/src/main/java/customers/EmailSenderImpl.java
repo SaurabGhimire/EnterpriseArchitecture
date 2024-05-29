@@ -4,7 +4,7 @@ public class EmailSenderImpl implements EmailSender {
 
 	String outgoingMailServer = "smtp.acme.com";
 
-	private Logger logger = new LoggerImpl();
+	private Logger logger;
 
 	public String getOutgoingMailServer() {
 		return outgoingMailServer;
@@ -15,4 +15,7 @@ public class EmailSenderImpl implements EmailSender {
 		logger.log("Email is sent: message= "+message +" , emailaddress ="+ email  );
 	}
 
+	public void setLogger(Logger logger){
+		this.logger = logger;
+	}
 }
