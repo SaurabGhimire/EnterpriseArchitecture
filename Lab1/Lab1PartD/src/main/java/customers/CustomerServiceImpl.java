@@ -21,11 +21,13 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Autowired
+	@Override
 	public void setCustomerRepository(CustomerRepository customerRepository) {
 		this.customerRepository = customerRepository;
 	}
 
 	@Autowired
+	@Override
 	public void setEmailSender(EmailSender emailSender) {
 		this.emailSender = emailSender;
 	}
