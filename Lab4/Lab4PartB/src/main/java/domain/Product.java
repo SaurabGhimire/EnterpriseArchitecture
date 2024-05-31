@@ -1,8 +1,15 @@
 package domain;
 
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
+@Entity
 public class Product {
+	@Id
+	@GeneratedValue
+	private long id;
 
 	private String name;
 
@@ -43,4 +50,13 @@ public class Product {
 		this.price = price;
 	}
 
+	@Override
+	public String toString() {
+		return "Product{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", description='" + description + '\'' +
+				", price=" + price +
+				'}';
+	}
 }

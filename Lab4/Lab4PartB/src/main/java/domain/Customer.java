@@ -1,18 +1,25 @@
 package domain;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-
+@Entity
 public class Customer {
+	@Id
+	@GeneratedValue
+	private long id;
 
 	private String firstName;
 
 	private String lastName;
 
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Address address;
 
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Collection<Order> theOrders = new ArrayList<>();
 
 	public Customer() {
@@ -62,4 +69,14 @@ public class Customer {
 		return removed;
 	}
 
+	@Override
+	public String toString() {
+		return "Customer{" +
+				"id=" + id +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", address=" + address +
+				", theOrders=" + theOrders +
+				'}';
+	}
 }

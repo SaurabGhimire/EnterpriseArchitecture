@@ -1,11 +1,17 @@
 package domain;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-
+@Entity
+@Table(name = "orders")
 public class Order {
+	@Id
+	@GeneratedValue
+	private long id;
 
 	private String orderNumber;
 
@@ -13,8 +19,11 @@ public class Order {
 
 	private String status;
 
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Customer customer;
 
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Collection<OrderLine> orderLines = new ArrayList<>();
 
 	public Order() {
@@ -66,4 +75,15 @@ public class Order {
 		return orderLines.add(ol);
 	}
 
+	@Override
+	public String toString() {
+		return "Order{" +
+				"id=" + id +
+				", orderNumber='" + orderNumber + '\'' +
+				", date='" + date + '\'' +
+				", status='" + status + '\'' +
+				", customer=" + customer +
+				", orderLines=" + orderLines +
+				'}';
+	}
 }

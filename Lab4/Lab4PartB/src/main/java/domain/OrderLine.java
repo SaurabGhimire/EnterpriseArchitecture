@@ -1,11 +1,17 @@
 package domain;
 
 
+import jakarta.persistence.*;
 
+@Entity
 public class OrderLine {
+	@Id
+	@GeneratedValue
+	private long id;
 
 	private int quantity;
 
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Product product;
 
 	public OrderLine() {
@@ -32,4 +38,12 @@ public class OrderLine {
 		this.product = product;
 	}
 
+	@Override
+	public String toString() {
+		return "OrderLine{" +
+				"id=" + id +
+				", quantity=" + quantity +
+				", product=" + product +
+				'}';
+	}
 }

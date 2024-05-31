@@ -1,6 +1,14 @@
 package domain;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+@Entity
 public class Address {
+	@Id
+	@GeneratedValue
+	private long id;
 
 	private String street;
 
@@ -14,6 +22,8 @@ public class Address {
 		this.city = city;
 		this.zip = zip;
 	}
+
+	public Address(){}
 
 	public String getStreet() {
 		return street;
@@ -39,4 +49,13 @@ public class Address {
 		this.zip = zip;
 	}
 
+	@Override
+	public String toString() {
+		return "Address{" +
+				"id=" + id +
+				", street='" + street + '\'' +
+				", city='" + city + '\'' +
+				", zip='" + zip + '\'' +
+				'}';
+	}
 }
