@@ -11,10 +11,10 @@ public class Appointment {
 
 	private String appDate;
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//	@JoinColumn(name = "doctor")
+	@JoinColumn(name = "doctor")
 	private Doctor doctor;
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//	@JoinColumn(name = "patient")
+	@JoinColumn(name = "patient")
 	private Patient patient;
 
 	@Embedded
