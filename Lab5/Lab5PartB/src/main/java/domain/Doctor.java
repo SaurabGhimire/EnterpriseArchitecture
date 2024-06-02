@@ -11,7 +11,7 @@ public class Doctor {
 	@GeneratedValue
 	private long id;
 
-//	@Column(name = "type")
+	@Column(name = "type")
 	private String doctorType;
 
 	private String firstName;
