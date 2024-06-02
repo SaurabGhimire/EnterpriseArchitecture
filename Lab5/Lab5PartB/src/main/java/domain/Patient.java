@@ -4,15 +4,15 @@ package domain;
 import jakarta.persistence.*;
 
 @Entity
-@SecondaryTable(name="address")
-//@SecondaryTables(
-//		@SecondaryTable(
-//				name="address",
-//				pkJoinColumns = {
-//						@PrimaryKeyJoinColumn(name="patient_id")
-//				}
-//		)
-//)
+//@SecondaryTable(name="address")
+@SecondaryTables(
+		@SecondaryTable(
+				name="address",
+				pkJoinColumns = {
+						@PrimaryKeyJoinColumn(name="patient_id")
+				}
+		)
+)
 public class Patient {
 	@Id
 	@GeneratedValue
