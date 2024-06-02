@@ -1,15 +1,24 @@
 package domain;
 
 
+import jakarta.persistence.*;
+
+@Entity
 public class Appointment {
+	@Id
+	@GeneratedValue
+	long id;
 
 	private String appDate;
-
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@JoinColumn(name = "doctor")
+	private Doctor doctor;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@JoinColumn(name = "patient")
 	private Patient patient;
 
+	@Embedded
 	private Payment payment;
-
-	private Doctor doctor;
 
 	public Appointment() {
 	}
