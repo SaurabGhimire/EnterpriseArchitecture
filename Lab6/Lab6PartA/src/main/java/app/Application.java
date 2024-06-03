@@ -73,18 +73,37 @@ public class Application implements CommandLineRunner{
 //			System.out.println(cd.getName());
 //		}
 
-		// Give all customers from the USA : Named Query
-		for(Customer customer: customerRepository.findAllByCityNamedQuery("New York")){
-			System.out.println(customer.getFirstName());
-		}
+//		// Give all customers from the USA : Named Query
+//		for(Customer customer: customerRepository.findAllByCityNamedQuery("New York")){
+//			System.out.println(customer.getFirstName());
+//		}
+//
+//		// Give all CD's from a certain artist : Named Query
+//		for(Cd cd: cdRepository.findByArtistNamedQuery("Pink Floyd")){
+//			System.out.println(cd.getName());
+//		}
 
-		// Give all CD's from a certain artist : Named Query
-		for(Cd cd: cdRepository.findByArtistNamedQuery("Pink Floyd")){
-			System.out.println(cd.getName());
-		}
+//		// Give all orderNumbers of all orders with status "closed
+//		for(String order: orderRepository.findOrderNumberByStatusJPQLQuery("closed")){
+//			System.out.println(order);
+//		}
 
+//		// Give the first and lastnames of all customers who live in Amsterdam
+//		for(String name: customerRepository.findFirstAndLastNameByCityJPQLQuery("New York")){
+//			System.out.println(name);
+//		}
 
+//		// Give the ordernumbers of all orders from customers who live in a certain city (city is a
+//		// parameter).
+//		for(String orderNumber: orderRepository.getOrderNumberByCityJPQLQuery("New York")){
+//			System.out.println(orderNumber);
+//		}
 
+//		// Give all CD’s from a certain artist with a price bigger than a certain amount (artist and
+//		// amount are parameter2).
+//		for(Cd cd: cdRepository.findByArtistAndPriceGreaterThanJPQLQuery("Pink Floyd", 1.0)){
+//			System.out.println(cd.getName());
+//		}
 
 
 
