@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+//import repositories.CustomerRepository;
+import repositories.CustomerRepository;
 import repositories.OrderRepository;
 
 import java.util.List;
@@ -17,6 +19,9 @@ import java.util.List;
 public class Application implements CommandLineRunner{
 	@Autowired
 	OrderRepository orderRepository;
+
+	@Autowired
+	CustomerRepository customerRepository;
 	
 
 	public static void main(String[] args) {
@@ -50,10 +55,14 @@ public class Application implements CommandLineRunner{
 
 		orderRepository.save(o1);
 
-		List<Order> orders = orderRepository.findAll();
+//		Collection<Order> orders = orderRepository.findAll();
 
-		for(Order order: orders){
-			printOrder(order);
+//		for(Order order: orders){
+//			printOrder(order);
+//		}
+
+		for(Customer customer: customerRepository.findAll()){
+			System.out.println(customer.getFirstName());
 		}
 
 	}
