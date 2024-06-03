@@ -1,16 +1,23 @@
 package bank.domain;
 
+import jakarta.persistence.*;
+import org.aspectj.lang.annotation.Aspect;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
-
+@Entity
 public class Account {
-
+	@Id
+	@GeneratedValue
+	long id;
 	long accountNumber;
 
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	Collection<AccountEntry> entryList = new ArrayList<AccountEntry>();
 
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	Customer customer;
 
 	public Account (long accountnr){
@@ -65,5 +72,10 @@ public class Account {
 	public Collection<AccountEntry> getEntryList() {
 		return entryList;
 	}
+
+	public void setEntryList(Collection<AccountEntry> entryList) {
+		this.entryList = entryList;
+	}
+
 
 }
