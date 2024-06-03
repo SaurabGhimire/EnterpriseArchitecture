@@ -8,10 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //import repositories.CustomerRepository;
+import repositories.CdRepository;
 import repositories.CustomerRepository;
 import repositories.OrderRepository;
-
-import java.util.List;
 
 @SpringBootApplication
 @EnableJpaRepositories("repositories")
@@ -22,6 +21,9 @@ public class Application implements CommandLineRunner{
 
 	@Autowired
 	CustomerRepository customerRepository;
+
+	@Autowired
+	CdRepository cdRepository;
 	
 
 	public static void main(String[] args) {
@@ -61,9 +63,31 @@ public class Application implements CommandLineRunner{
 //			printOrder(order);
 //		}
 
-		for(Customer customer: customerRepository.findAll()){
-			System.out.println(customer.getFirstName());
-		}
+//		// Give all all customers
+//		for(Customer customer: customerRepository.findAll()){
+//			System.out.println(customer.getFirstName());
+//		}
+
+//		// Give all CD's from artist with a price smaller than
+//		for(Cd cd: cdRepository.findByArtistAndPriceLessThan("Pink Floyd", 1000.0)){
+//			System.out.println(cd.getName());
+//		}
+
+//		// Give all customers from the USA : Named Query
+//		for(Customer customer: customerRepository.findAllByCity("New York")){
+//			System.out.println(customer.getFirstName());
+//		}
+//
+//		// Give all CD's from a certain artist : Named Query
+//		for(Cd cd: cdRepository.findByArtist("Pink Floyd")){
+//			System.out.println(cd.getName());
+//		}
+
+
+
+
+
+
 
 	}
 
