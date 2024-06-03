@@ -11,4 +11,4 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     @Query("select concat(c.firstName, ' ', c.lastName) from Customer c where c.address.city = :city")
     Collection<String> findFirstAndLastNameByCityJPQLQuery(String city);
-}
+   }

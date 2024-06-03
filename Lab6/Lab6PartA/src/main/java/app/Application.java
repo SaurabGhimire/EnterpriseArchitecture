@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //import repositories.CustomerRepository;
+import repositories.AddressRepository;
 import repositories.CdRepository;
 import repositories.CustomerRepository;
 import repositories.OrderRepository;
@@ -24,6 +25,9 @@ public class Application implements CommandLineRunner{
 
 	@Autowired
 	CdRepository cdRepository;
+
+	@Autowired
+	AddressRepository addressRepository;
 	
 
 	public static void main(String[] args) {
@@ -105,7 +109,15 @@ public class Application implements CommandLineRunner{
 //			System.out.println(cd.getName());
 //		}
 
+//		// Give all addresses in Amsterdam.
+//		for(Address address: addressRepository.findByCity("New York")){
+//			System.out.println(address);
+//		}
 
+//		// Give all CD’s from U2
+//		for(Cd cd: cdRepository.findByArtistNativeQuery("Pink Floyd")){
+//			System.out.println(cd);
+//		}
 
 
 	}

@@ -14,4 +14,8 @@ public interface CdRepository extends JpaRepository<Cd, Long> {
 
     @Query("select c from Cd c where c.artist = :artist and c.price > :amount")
     Collection<Cd> findByArtistAndPriceGreaterThanJPQLQuery(String artist, double amount);
+
+
+    @Query(value = "select * from cd c join product p on c.id=p.id where c.artist = :artist" , nativeQuery = true)
+    Collection<Cd> findByArtistNativeQuery(String artist);
 }
