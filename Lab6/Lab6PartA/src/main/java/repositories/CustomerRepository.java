@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.Collection;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-    Collection<Customer> findAllByCity(String city);
+    Collection<Customer> findAllByCityNamedQuery(String city);
 }

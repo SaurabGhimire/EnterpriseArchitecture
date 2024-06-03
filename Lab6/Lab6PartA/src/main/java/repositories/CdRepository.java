@@ -10,5 +10,5 @@ import java.util.Collection;
 public interface CdRepository extends JpaRepository<Cd, Long> {
     Collection<Cd> findByArtistAndPriceLessThan(String artist, double price);
 
-    Collection<Cd> findByArtist(String artist);
+    Collection<Cd> findByArtistNamedQuery(String artist);
 }

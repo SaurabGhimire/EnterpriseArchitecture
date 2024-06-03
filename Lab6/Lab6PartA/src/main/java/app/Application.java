@@ -73,15 +73,15 @@ public class Application implements CommandLineRunner{
 //			System.out.println(cd.getName());
 //		}
 
-//		// Give all customers from the USA : Named Query
-//		for(Customer customer: customerRepository.findAllByCity("New York")){
-//			System.out.println(customer.getFirstName());
-//		}
-//
-//		// Give all CD's from a certain artist : Named Query
-//		for(Cd cd: cdRepository.findByArtist("Pink Floyd")){
-//			System.out.println(cd.getName());
-//		}
+		// Give all customers from the USA : Named Query
+		for(Customer customer: customerRepository.findAllByCityNamedQuery("New York")){
+			System.out.println(customer.getFirstName());
+		}
+
+		// Give all CD's from a certain artist : Named Query
+		for(Cd cd: cdRepository.findByArtistNamedQuery("Pink Floyd")){
+			System.out.println(cd.getName());
+		}
 
 
 

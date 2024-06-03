@@ -8,7 +8,7 @@ import java.util.Collections;
 
 @Entity
 @NamedQuery(
-		name = "Customer.findAllByCity",
+		name = "Customer.findAllByCityNamedQuery",
 		query = "select c from Customer c where c.address.city = :city"
 )
 public class Customer {

@@ -5,7 +5,7 @@ import jakarta.persistence.NamedQuery;
 
 @Entity
 @NamedQuery(
-        name = "Cd.findByArtist",
+        name = "Cd.findByArtistNamedQuery",
         query = "select c from Cd c where c.artist = :artist"
 )
 public class Cd extends Product{
