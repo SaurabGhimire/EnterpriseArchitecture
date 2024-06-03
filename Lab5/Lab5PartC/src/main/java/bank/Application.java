@@ -18,8 +18,8 @@ import java.util.Collection;
 
 
 @SpringBootApplication
-@EnableJpaRepositories("repository")
-@EntityScan("domain")
+@EnableJpaRepositories("bank.repository")
+@EntityScan("bank.domain")
 @ComponentScan()
 public class Application implements CommandLineRunner {
 	@Autowired

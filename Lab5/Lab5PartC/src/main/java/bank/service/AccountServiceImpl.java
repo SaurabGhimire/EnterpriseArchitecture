@@ -20,9 +20,9 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private AccountRepository accountRepository;
 
+	@Autowired
 	private CurrencyConverter currencyConverter;
 	@Autowired
-
 	private JMSSender jmsSender;
 	@Autowired
 

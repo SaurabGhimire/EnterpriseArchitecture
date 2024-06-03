@@ -24,6 +24,8 @@ public class Account {
 		this.accountNumber = accountnr;
 	}
 
+	public Account(){}
+
 	public long getAccountNumber() {
 		return accountNumber;
 	}
