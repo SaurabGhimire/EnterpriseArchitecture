@@ -20,6 +20,9 @@ public class BankService {
 	private AccountRepository accountRepository;
 
 	@Autowired
+	private  TraceService traceService;
+
+	@Autowired
 	private CustomerRepository customerRepository;
 	@Autowired
 	private TraceRecordRepository traceRecordRepository;
@@ -35,11 +38,11 @@ public class BankService {
 			customer.setAccount(account);
 			customerRepository.saveCustomer(customer);
 			emailSender.sendEmail(emailAddress, "Welcome "+customerName);
-			traceRecordRepository.save(new TraceRecord(LocalDateTime.now(), "Customer "+ customerName + " created with account " + AccountNumber));
+			traceService.storesTrace(new TraceRecord(LocalDateTime.now(), "Customer "+ customerName + " created with account " + AccountNumber));
 		} catch(Exception e){
 			emailSender.sendEmail(emailAddress, "We could not create your account " + AccountNumber);
-			traceRecordRepository.save(new TraceRecord(LocalDateTime.now(), "Could not create customer " + customerName +   " with account " + AccountNumber));
-
+			traceService.storesTrace(new TraceRecord(LocalDateTime.now(), "Could not create customer " + customerName +   " with account " + AccountNumber));
+			throw e;
 		}
 	}
 }
