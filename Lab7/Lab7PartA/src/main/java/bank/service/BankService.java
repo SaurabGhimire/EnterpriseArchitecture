@@ -5,6 +5,7 @@ import bank.domain.Customer;
 import bank.integration.EmailSender;
 import bank.repository.AccountRepository;
 import bank.repository.CustomerRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class BankService {
 	@Autowired
 	private EmailSender emailSender;
 	
-
+	@Transactional
 	public void createCustomerAndAccount(int customerId, String customerName, String emailAddress, String AccountNumber){
 		Account account = new Account(AccountNumber);
 		accountRepository.save(account);
