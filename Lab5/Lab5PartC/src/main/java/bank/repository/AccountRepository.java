@@ -6,6 +6,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 
-public interface AccountRepository extends JpaRepository<Account, Long>{
-	public Account getByAccountNumber(long accountNumber);
+public interface AccountRepository {
+
+	public void saveAccount(Account account);
+
+	public void updateAccount(Account account);
+
+	public Account loadAccount(long accountNumber);
+
+	public Collection<Account> getAccounts();
+
 }
