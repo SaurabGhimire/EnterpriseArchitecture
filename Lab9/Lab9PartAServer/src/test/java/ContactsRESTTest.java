@@ -1,6 +1,5 @@
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import mvc.Contact;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
