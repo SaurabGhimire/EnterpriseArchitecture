@@ -50,6 +50,13 @@
 			<artifactId>junit-dataprovider</artifactId>
 			<version>1.13.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.32</version> <!-- Use the latest version -->
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
