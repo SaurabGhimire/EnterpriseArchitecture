@@ -1,39 +1,35 @@
 package bank.domain;
 
 import jakarta.persistence.*;
-import org.aspectj.lang.annotation.Aspect;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
 @Entity
 public class Account {
-	@Id
-	@GeneratedValue
-	long id;
-	long accountNumber;
+	@Id  
+	long accountnumber;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany (cascade={CascadeType.ALL})
+	@JoinColumn(name="accountnr")
 	Collection<AccountEntry> entryList = new ArrayList<AccountEntry>();
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne (cascade={CascadeType.ALL}, fetch= FetchType.LAZY)
+	@JoinColumn(name="customerid")
 	Customer customer;
 
+	public Account() {
+	}
+
 	public Account (long accountnr){
-		this.accountNumber = accountnr;
+		this.accountnumber = accountnr;
 	}
-
-	public Account(){}
-
-	public long getAccountNumber() {
-		return accountNumber;
+	public long getAccountnumber() {
+		return accountnumber;
 	}
-
-	public void setAccountNumber(long accountNumber) {
-		this.accountNumber = accountNumber;
+	public void setAccountnumber(long accountnumber) {
+		this.accountnumber = accountnumber;
 	}
-
 	public double getBalance() {
 		double balance=0;
 		for (AccountEntry entry : entryList) {
@@ -41,12 +37,10 @@ public class Account {
 		}
 		return balance;
 	}
-
 	public void deposit(double amount){
 		AccountEntry entry = new AccountEntry(new Date(), amount, "deposit", "", "");
 		entryList.add(entry);
 	}
-
 	public void withdraw(double amount){
 		AccountEntry entry = new AccountEntry(new Date(), -amount, "withdraw", "", "");
 		entryList.add(entry);	
@@ -57,27 +51,20 @@ public class Account {
 	}
 
 	public void transferFunds(Account toAccount, double amount, String description){
-		AccountEntry fromEntry = new AccountEntry(new Date(), -amount, description, ""+toAccount.getAccountNumber(), toAccount.getCustomer().getName());
-		AccountEntry toEntry = new AccountEntry(new Date(), amount, description, ""+toAccount.getAccountNumber(), toAccount.getCustomer().getName());
+		AccountEntry fromEntry = new AccountEntry(new Date(), -amount, description, ""+toAccount.getAccountnumber(), toAccount.getCustomer().getName());
+		AccountEntry toEntry = new AccountEntry(new Date(), amount, description, ""+toAccount.getAccountnumber(), toAccount.getCustomer().getName());
 		entryList.add(fromEntry);	
 		toAccount.addEntry(toEntry);
 	}
-	
+
 	public Customer getCustomer() {
 		return customer;
 	}
-
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-
 	public Collection<AccountEntry> getEntryList() {
 		return entryList;
 	}
-
-	public void setEntryList(Collection<AccountEntry> entryList) {
-		this.entryList = entryList;
-	}
-
 
 }

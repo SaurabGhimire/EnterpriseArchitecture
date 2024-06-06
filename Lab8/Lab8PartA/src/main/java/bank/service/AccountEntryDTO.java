@@ -1,14 +1,8 @@
-package bank.domain;
+package bank.service;
 
-import jakarta.persistence.*;
 import java.util.Date;
 
-@Entity
-public class AccountEntry {
-
-	@Id
-	@GeneratedValue
-	private long id;
+public class AccountEntryDTO {
 
 	private Date date;
 	private double amount;
@@ -16,25 +10,17 @@ public class AccountEntry {
 	private String fromAccountNumber;
 	private String fromPersonName;
 
-	public AccountEntry() {
+	public AccountEntryDTO() {
 	}
 
-	public AccountEntry(Date date, double amount, String description,
-			String fromAccountNumber, String fromPersonName) {
+	public AccountEntryDTO(Date date, double amount, String description,
+						   String fromAccountNumber, String fromPersonName) {
 		super();
 		this.date = date;
 		this.amount = amount;
 		this.description = description;
 		this.fromAccountNumber = fromAccountNumber;
 		this.fromPersonName = fromPersonName;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public double getAmount() {

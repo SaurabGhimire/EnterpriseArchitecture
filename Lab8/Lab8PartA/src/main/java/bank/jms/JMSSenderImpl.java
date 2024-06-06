@@ -1,9 +1,8 @@
-package bank.integration.jms;
+package bank.jms;
 
+import org.springframework.stereotype.Service;
 
-import org.springframework.stereotype.Component;
-
-@Component
+@Service
 public class JMSSenderImpl implements JMSSender{
 	
 	public void sendJMSMessage (String text){
