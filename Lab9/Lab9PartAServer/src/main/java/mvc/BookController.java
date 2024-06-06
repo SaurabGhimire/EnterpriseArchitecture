@@ -47,7 +47,7 @@ public class BookController {
         return new ResponseEntity<Book>(book, HttpStatus.OK);
     }
 
-    @DeleteMapping("/books/isbn")
+    @DeleteMapping("/books/{isbn}")
     public ResponseEntity<?> deleteBook(@PathVariable String isbn){
         Book book = books.get(isbn);
         if(book == null){
