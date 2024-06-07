@@ -30,9 +30,45 @@ public class BookController {
     }
 
     @GetMapping("/books")
-    public ResponseEntity<?> getAllBooks() {
-        Collection<Book> allBooks = books.values();
-        return new ResponseEntity<>(allBooks, HttpStatus.OK);
+    public ResponseEntity<?> getBooks(@RequestParam(required = false) String isbn,
+                                      @RequestParam(required = false) String author) {
+        if (isbn == null && author == null) {
+            Collection<Book> allBooks = books.values();
+            Books booksType = new Books(allBooks);
+            return new ResponseEntity<Books>(booksType, HttpStatus.OK);
+        }
+
+        Collection<Book> filteredBooks = books.values();
+
+        if(isbn != null){
+            filteredBooks = filteredBooks.stream()
+                    .filter(book ->
+                    (book.getIsbn().equalsIgnoreCase(isbn)))
+                    .collect(Collectors.toList());
+        }
+
+        if(author != null){
+            filteredBooks = filteredBooks.stream()
+                    .filter(book ->
+                            (book.getAuthor().equalsIgnoreCase(author)))
+                    .collect(Collectors.toList());
+        }
+
+        if (filteredBooks.isEmpty()) {
+            String message = "No books found with the provided criteria:";
+            if(isbn != null){
+                message = message + " ISBN= "+ isbn;
+
+            }
+            if(author != null){
+                message = message + " Author= "+ author;
+
+            }
+            return new ResponseEntity<>(new CustomErrorType(message), HttpStatus.NOT_FOUND);
+        }
+        Books filteredBooksType = new Books(filteredBooks);
+
+        return new ResponseEntity<Books>(filteredBooksType, HttpStatus.OK);
     }
 
     @PostMapping("/books")
@@ -58,6 +94,10 @@ public class BookController {
         return  new ResponseEntity<>(book, HttpStatus.OK);
     }
 
+
+    // This is a separate endpoint
+    // But, it can also be accomplished using query parameters in getAllBooks()
+    // if "author" is not null in getAllBooks(), it filters books by authors
     @GetMapping("books/author/{author}")
     public ResponseEntity<?> searchBooks(@PathVariable String author){
         Collection<Book> allBooks= books.values();
