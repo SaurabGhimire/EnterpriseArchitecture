@@ -1,22 +1,31 @@
 package bank.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Customer {
+public class Customer implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
-	long id;
-
+	private long id;
 	private String name;
+
+	public Customer() {
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public Customer(String name) {
 		this.name = name;
 	}
-
-	public Customer(){}
 
 	public String getName() {
 		return name;

@@ -1,37 +1,40 @@
 package bank.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
 public class AccountEntry {
+
 	@Id
 	@GeneratedValue
-	long id;
+	private long id;
 
 	private Date date;
-
 	private double amount;
-
 	private String description;
-
 	private String fromAccountNumber;
-
 	private String fromPersonName;
-	
+
 	public AccountEntry() {
 	}
 
-	public AccountEntry(Date date, double amount, String description, String fromAccountNumber, String fromPersonName) {
+	public AccountEntry(Date date, double amount, String description,
+			String fromAccountNumber, String fromPersonName) {
 		super();
 		this.date = date;
 		this.amount = amount;
 		this.description = description;
 		this.fromAccountNumber = fromAccountNumber;
 		this.fromPersonName = fromPersonName;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public double getAmount() {
@@ -73,5 +76,5 @@ public class AccountEntry {
 	public void setFromPersonName(String fromPersonName) {
 		this.fromPersonName = fromPersonName;
 	}
-	
+
 }
