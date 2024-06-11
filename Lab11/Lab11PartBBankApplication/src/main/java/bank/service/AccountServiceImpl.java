@@ -34,8 +34,6 @@ public class AccountServiceImpl implements AccountService {
 		accountRepository.save(account);
 		logger.log("createAccount with parameters accountNumber= "
 				+ accountNumber + " , customerName= " + customerName);
-		jmsSender.sendJMSMessage("createAccount with parameters accountNumber= "
-				+ accountNumber + " , customerName= " + customerName);
 		return AccountAdapter.getAccountDTOFromAccount(account);
 	}
 
