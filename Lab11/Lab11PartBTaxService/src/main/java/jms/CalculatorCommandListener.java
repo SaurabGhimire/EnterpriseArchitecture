@@ -8,20 +8,18 @@ import java.io.IOException;
 
 @Component
 public class CalculatorCommandListener {
-    double result = 0.0;
 
-    @JmsListener(destination = "calculatorQueue")
+    @JmsListener(destination = "taxService")
     public void receiveMessage(final String commandAsString) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            CalculatorCommand calculatorCommand = objectMapper.readValue(commandAsString, CalculatorCommand.class);
-            result = CalculatorCommand.getCalculatedValue(result,calculatorCommand);
-            System.out.println("JMS receiver received message:" + calculatorCommand.getOperator()+" "+calculatorCommand.getValue());
-            System.out.println("After calculation: "+ result);
+//        ObjectMapper objectMapper = new ObjectMapper();
+//            CalculatorCommand calculatorCommand = objectMapper.readValue(commandAsString, CalculatorCommand.class);
+//            result = CalculatorCommand.getCalculatedValue(result,calculatorCommand);
+//            System.out.println("JMS receiver received message:" + calculatorCommand.getOperator()+" "+calculatorCommand.getValue());
+//            System.out.println("After calculation: "+ result);
 
-        } catch (IOException e) {
-            System.out.println("JMS receiver: Cannot convert : " + commandAsString+" to a Person object");
-        }
+            System.out.println("After calculation: "+ commandAsString);
+
+
     }
 
 }
