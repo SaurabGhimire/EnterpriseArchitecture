@@ -12,7 +12,7 @@ import java.util.Collection;
 public class BankStatementPrinter {
     @Autowired
     AccountService accountService;
-    @Scheduled(fixedRate = 20000)
+    @Scheduled(fixedRate = 200000000)
     public void printAccountDetails(){
         Collection<AccountDTO> accounts = accountService.getAllAccounts();
         System.out.println("Total Accounts:" + (long) accounts.size());
