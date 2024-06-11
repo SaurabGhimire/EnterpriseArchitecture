@@ -6,12 +6,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LoggerImpl implements Logger{
-	@Autowired
-	org.slf4j.Logger logger;
 
 	public void log(String logstring) {
-		logger.info(logstring);
-		java.util.logging.Logger.getLogger("BankLogger").info(logstring);
+		LoggerFactory.getLogger("BankLogger").info(logstring);
+//		java.util.logging.Logger.getLogger("BankLogger").info(logstring);
 	}
 
 }

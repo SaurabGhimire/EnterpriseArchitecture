@@ -5,6 +5,7 @@ import bank.domain.Account;
 import bank.domain.Customer;
 import bank.jms.JMSSender;
 import bank.logging.Logger;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,6 @@ public class AccountServiceImpl implements AccountService {
 	private JMSSender jmsSender;
 	@Autowired
 	private Logger logger;
-
-
 
 	public AccountDTO createAccount(long accountNumber, String customerName) {
 		Account account = new Account(accountNumber);

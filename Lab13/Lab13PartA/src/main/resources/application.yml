@@ -29,5 +29,11 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
 logging:
   file:
-    name: /Users/sourrab/miu/Courses/EA/Lab/Lab13/application.log
+    name: C:/EnterpriseArchitecture/Lab13
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    bank: INFO
+
+
         
