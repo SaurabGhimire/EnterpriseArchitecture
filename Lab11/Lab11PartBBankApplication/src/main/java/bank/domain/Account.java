@@ -11,7 +11,6 @@ public class Account {
 	long accountnumber;
 
 	@OneToMany (cascade={CascadeType.ALL})
-	@JoinColumn(name="accountnr")
 	Collection<AccountEntry> entryList = new ArrayList<AccountEntry>();
 
 	@ManyToOne (cascade={CascadeType.ALL}, fetch= FetchType.LAZY)
