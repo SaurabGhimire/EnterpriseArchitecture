@@ -34,6 +34,8 @@ public class AccountServiceImpl implements AccountService {
 		accountRepository.save(account);
 		logger.log("createAccount with parameters accountNumber= "
 				+ accountNumber + " , customerName= " + customerName);
+		jmsSender.sendJMSMessage("createAccount with parameters accountNumber= "
+				+ accountNumber + " , customerName= " + customerName);
 		return AccountAdapter.getAccountDTOFromAccount(account);
 	}
 
@@ -44,7 +46,7 @@ public class AccountServiceImpl implements AccountService {
 		accountRepository.save(account);
 		logger.log("deposit with parameters accountNumber= " + accountNumber
 				+ " , amount= " + amount);
-		if (amount > 10000) {
+		if (amount > 1000) {
 			jmsSender.sendJMSMessage("Deposit of $ " + amount
 					+ " to account with accountNumber= " + accountNumber);
 		}

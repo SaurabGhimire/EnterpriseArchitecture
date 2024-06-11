@@ -4,7 +4,10 @@ import bank.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
+import org.springframework.jms.annotation.EnableJms;
 
+@EnableJms
 @SpringBootApplication
 public class Application {
 
