@@ -3,7 +3,6 @@ package bank.service;
 import java.util.ArrayList;
 import java.util.Collection;
 
-
 public class AccountDTO {
 	private long accountnumber;
 	private double balance;
@@ -38,5 +37,15 @@ public class AccountDTO {
 
 	public void setBalance(double balance) {
 		this.balance = balance;
+	}
+
+	@Override
+	public String toString() {
+		return "AccountDTO{" +
+				"accountnumber=" + accountnumber +
+				", balance=" + balance +
+				", entryList=" + entryList +
+				", customer=" + customer +
+				'}';
 	}
 }

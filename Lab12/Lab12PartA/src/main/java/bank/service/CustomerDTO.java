@@ -19,4 +19,10 @@ public class CustomerDTO  {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "CustomerDTO{" +
+				"name='" + name + '\'' +
+				'}';
+	}
 }
