@@ -13,6 +13,9 @@ public class Application implements CommandLineRunner {
     @Autowired
     Sender sender;
 
+    @Autowired
+    Sender sender2;
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
@@ -21,6 +24,11 @@ public class Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
         sender.send("topicA", "Hello World");
         System.out.println("Message has been sent");
+
+        sender.send("topicA2", "Hello from the other side from Sender2");
+        System.out.println("Sender2 Message has been sent");
+
+
     }
 
 }
