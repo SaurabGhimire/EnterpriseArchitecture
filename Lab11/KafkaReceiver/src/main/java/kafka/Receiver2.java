@@ -10,4 +10,9 @@ public class Receiver2 {
     public void receive(@Payload String message){
         System.out.println("Receiver 2 received message= "+ message);
     }
+
+    @KafkaListener(topics = {"topicA2"})
+    public void receiveOnA2(@Payload String message){
+        System.out.println("Receiver 2 received message= "+ message);
+    }
 }
