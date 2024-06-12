@@ -42,4 +42,16 @@ public class AccountControllerTests {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.accountHolder").value("Account Holder 1"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.balance").value(100.0));
     }
+
+    @Test
+    public void testCreateAccount() throws Exception {
+        String accountNumber = "123";
+        String amount = "100.0";
+        String accountHolder = "Author 1";
+
+        Mockito.doNothing().when(accountService).createAccount(accountNumber, Double.parseDouble(amount), accountHolder);
+
+        mock.perform(MockMvcRequestBuilders.get("/createaccount/" + accountNumber + "/" + amount + "/" + accountHolder))
+                .andExpect(status().isOk());
+    }
 }
